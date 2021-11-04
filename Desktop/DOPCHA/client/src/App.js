@@ -15,14 +15,16 @@ import Registration from './registration/Registration'
 import Agency_R from './registration/Agency_R';
 import Individual_R from './registration/Individual_R';
 import R_Done from './registration/R_Done';
-
 import 'antd/dist/antd.css';
+import React from 'react';
+
 
 
 const App = () => {
   return(
     <>
     <Router>
+
       <Route path ='/' exact component = {Main}/>
       <Route path ='/hompage/Agency' exact component = {Agency}/>
      <Route path='/hompage/Agency_Registering' exact component={Agency_Registering}/>

@@ -2,12 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import * as seviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import 'antd/dist/antd.css';
+import {applyMiddleware} from 'redux';
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
 import reportWebVitals from './reportWebVitals';
 
+const createProxyMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={createProxyMiddleware()}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
