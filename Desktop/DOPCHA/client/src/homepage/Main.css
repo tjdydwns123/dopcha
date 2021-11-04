@@ -1,0 +1,54 @@
+.main_frame{
+    display: flex;
+    flex-direction: column;
+    padding:40px;
+}
+
+.main_top{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 7px;
+    justify-content: space-around;
+}
+
+.main_click{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.main_btn{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.main_middle{
+    display: flex;
+    flex-direction: column;
+    width:1200px;
+    height:500px;
+    margin-left: 80px;
+}
+
+.main_donation{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 120px;
+    align-content:space-around ;
+}
+
+.main_volunteer{
+    display: flex;
+    flex-direction: row;
+    align-content:space-around ;
+    align-items: center;
+}
+
+
+
+.main_bottom{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
