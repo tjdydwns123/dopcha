@@ -16,11 +16,20 @@ import Agency_R from './registration/Agency_R';
 import Individual_R from './registration/Individual_R';
 import R_Done from './registration/R_Done';
 import 'antd/dist/antd.css';
-import React from 'react';
+import {useEffect} from 'react';
+import axios from 'axios';
 
 
 
 const App = () => {
+  const callApi = async()=>{
+    axios.get("/api").then((res)=>console.log(res.data.test));
+  };
+
+  useEffect(()=>{
+    callApi();
+  }, []);
+  
   return(
     <>
     <Router>
