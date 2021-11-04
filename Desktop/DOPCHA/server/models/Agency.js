@@ -22,6 +22,16 @@ const userSchema = mongoose.Schema({
         maxlength: 50,
         required: true
     },
+    agencyName:{
+        type: String,
+        maxlength: 50,
+        required: true
+    },
+    agencyRepName:{
+        type: String,
+        maxlength: 50,
+        required: true
+    },
 
     email:{
         type: String,
@@ -29,8 +39,23 @@ const userSchema = mongoose.Schema({
         unique: 1,
         required: true
     },
+    faxNumber:{
+        type: String,
+        trim: true,
+        required: true
+    },
     phoneNumber:{
         type: String,
+        trim: true,
+        required: true
+    },
+    webSite:{
+        type: String,
+        trim: true,
+        required: true
+    },
+    certificate:{
+        type: Mixed,
         trim: true,
         required: true
     },
@@ -50,7 +75,7 @@ const userSchema = mongoose.Schema({
 })
 
 userSchema.pre('save',function(next){
-    var user = this;
+    var user = this; 
     // 비밀번호 암호화
 
     if(user.isModified('password')){

@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const router = express.Router();
 const app = express()
 const port = 5000
 const bodyParser = require('body-parser');
@@ -17,10 +18,12 @@ mongoose.connect('mongodb+srv://ssy:1234@cluster0.1bw63.mongodb.net/myFirstDatab
 .then(() => console.log('MongoDB Connected...'))
 .catch((err)=> console.log('MongoDB error:',err))
 
+router.get("/api/hello", (req,res)=>{
+  res.send({test: "hi"});
+});
 
-app.get('/', (req, res) => {
-  res.send('Hello World! fnfnfn 하하하')
-})
+//app.get('/api/hello', (req, res) => {
+//  res.send('Hello World! fnfnfn 하하하')})
 
 app.post('/api/users/register',(req,res)=>{
   //회원가입시 필요한 정보들을 클라이언트에서 가져오면 db에 넣어줌
@@ -94,3 +97,5 @@ app.get('/api/users/logout', auth, (req, res)=>{
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+module.exports = router;
