@@ -39,7 +39,7 @@ const userSchema = mongoose.Schema({
         default: 0
     },
     image: {
-        type: Mixed
+        type: String
     },
     token: {
         type: String

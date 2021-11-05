@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app = express()
-const port = 5000
+const port = 5001
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const {auth} = require('./middleware/auth');
@@ -18,12 +18,12 @@ mongoose.connect('mongodb+srv://ssy:1234@cluster0.1bw63.mongodb.net/myFirstDatab
 .then(() => console.log('MongoDB Connected...'))
 .catch((err)=> console.log('MongoDB error:',err))
 
-router.get("/api/hello", (req,res)=>{
-  res.send({test: "hi"});
-});
+    router.get("/", (req,res)=>{
+      res.send("hi");
+    });
 
-//app.get('/api/hello', (req, res) => {
-//  res.send('Hello World! fnfnfn 하하하')})
+app.get('/api/hello', (req, res) => {
+ res.send('Hello World! fnfnfn 하하하')})
 
 app.post('/api/users/register',(req,res)=>{
   //회원가입시 필요한 정보들을 클라이언트에서 가져오면 db에 넣어줌
@@ -72,7 +72,7 @@ app.get('/api/users/auth', auth ,(req, res)=>{
   //여기까지 미들웨어 통과해왔다 = 인증이 참이라는 말.
   res.status(200).json({
     _id: req.user._id,
-    isAdmin: req.user.role === 0? flase:true,
+    isAdmin: req.user.role === 0? false:true,
     isAtuth: true,
     email: req.user.email,
     name:req.user.name,

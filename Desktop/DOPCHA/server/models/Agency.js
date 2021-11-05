@@ -55,7 +55,7 @@ const userSchema = mongoose.Schema({
         required: true
     },
     certificate:{
-        type: Mixed,
+        type: String,
         trim: true,
         required: true
     },
@@ -64,7 +64,7 @@ const userSchema = mongoose.Schema({
         default: 0
     },
     image: {
-        type: Mixed
+        type: String
     },
     token: {
         type: String
