@@ -100,7 +100,7 @@
 .cc{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: right;
     width: 300px;
     height: auto;
     margin-top: 8px;
@@ -176,7 +176,7 @@
 .ccc{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: right;
     width: 300px;
     height: auto;
     margin-top: 8px;

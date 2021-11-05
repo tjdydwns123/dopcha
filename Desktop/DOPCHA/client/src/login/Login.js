@@ -70,7 +70,7 @@ const Login=({history}) => {
                         </div>
 
                         <div className="cc">   
-                            <Checkbox onChange={onChange}>자동 로그인</Checkbox>
+                           
                             <a onClick={() => {history.push('/login/Finding_id')}} style={{color:'#000000'}}>
                                 ID/PW 찾기
                             </a>
@@ -117,7 +117,7 @@ const Login=({history}) => {
                         </div>
 
                         <div className="ccc">
-                            <Checkbox onChange={onChange}>자동 로그인</Checkbox>
+                          
                             <a onClick={() => {history.push('/login/Finding_id')}} style={{color:'#000000'}}>
                                 ID/PW 찾기
                             </a>
