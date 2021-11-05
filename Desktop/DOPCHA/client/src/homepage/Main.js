@@ -6,11 +6,10 @@ import img_banner1 from '../images/img_banner1.png';
 import img_banner2 from '../images/img_banner2.png';
 import img_donation from '../images/img_donation.png';
 import img_volunteer from '../images/img_volunteer.png';
+import axios from 'axios';
 
 
 const Main=({history}) => {
-
-      
   
     return(
         <div className='main_frame'>

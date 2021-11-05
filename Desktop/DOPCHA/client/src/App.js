@@ -16,14 +16,29 @@ import Agency_R from './registration/Agency_R';
 import Individual_R from './registration/Individual_R';
 import R_Done from './registration/R_Done';
 import 'antd/dist/antd.css';
-import {useEffect} from 'react';
+import {useEffect,useState} from 'react';
 import axios from 'axios';
 
 
 
 const App = () => {
   const callApi = async()=>{
-    axios.get("/api").then((res)=>console.log(res.data.test));
+    axios.get("/").then((res)=>console.log(res.data.test));
+    axios.get("/hompage/Agency").then((res)=>console.log(res.data.test));
+    axios.get("/homepage/Agency_Registering").then((res)=>console.log(res.data.test));
+    axios.get("/hompage/Individual").then((res)=>console.log(res.data.test));
+    axios.get("/hompage/Individual_Detail").then((res)=>console.log(res.data.test));
+    axios.get("/login/Login").then((res)=>console.log(res.data.test));
+    axios.get("/login/Finding_id").then((res)=>console.log(res.data.test));
+    axios.get("/login/Finding_id2").then((res)=>console.log(res.data.test));
+    axios.get("/login/Finding_pw").then((res)=>console.log(res.data.test));
+    axios.get("/login/Finding_pw2").then((res)=>console.log(res.data.test));
+    axios.get("/registration/Registration").then((res)=>console.log(res.data.test));
+    axios.get("/registration/Agency_R").then((res)=>console.log(res.data.test));
+    axios.get("/registration/Individual_R").then((res)=>console.log(res.data.test));
+    axios.get("/registration/R_Done").then((res)=>console.log(res.data.test));
+
+
   };
 
   useEffect(()=>{

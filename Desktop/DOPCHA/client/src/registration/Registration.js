@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import "./Registration.css";
 import {Divider, Button} from "antd";
 import logo from '../images/dobcha_logo.png'
+import axios from 'axios';
 
 const Registration = ({history}) => {
 

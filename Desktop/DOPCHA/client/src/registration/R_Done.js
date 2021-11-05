@@ -5,6 +5,7 @@ import "./R_Done.css";
 import logo from '../images/dobcha_logo.png'
 import { FileProtectOutlined } from "@ant-design/icons";
 import { Divider, Button } from 'antd'
+import axios from 'axios';
 
 const R_Done = ({history}) =>{
 return (

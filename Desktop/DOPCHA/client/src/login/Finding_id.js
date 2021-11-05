@@ -3,6 +3,9 @@ import React, {useEffect, useState} from 'react'
 import './Finding_id.css';
 import { Divider, Input, Button, Menu, Dropdown,AutoComplete } from 'antd';
 import logo from '../images/dobcha_logo.png'
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
 
 
 

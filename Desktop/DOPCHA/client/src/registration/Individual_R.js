@@ -6,8 +6,7 @@ import "./Individual_R.css";
 import { Divider, Button } from "antd";
 import { Form, Input, InputNumber, Select, Checkbox, AutoComplete } from 'antd';
 import logo from '../images/dobcha_logo.png'
-
-
+import axios from 'axios';
 
 const Individual_R =({history}) => {
   

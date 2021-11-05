@@ -4,6 +4,7 @@ import { Divider,  Button, Carousel, Menu, Dropdown,Modal, Drawer, Upload, messa
 import logo from '../images/dobcha_logo.png';
 import { UserOutlined} from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
+import axios from 'axios';
 
 const Individual_Detail=({history}) => {
 

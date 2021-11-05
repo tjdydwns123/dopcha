@@ -3,10 +3,14 @@ import './Login.css';
 import { Divider, Input, Button, Checkbox, message } from 'antd';
 import { BankFilled ,LockFilled} from '@ant-design/icons';
 import logo from '../images/dobcha_logo.png'
+import {useDispatch} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import axios from 'axios';
 
 
 
 const Login=({history}) => {
+
     function onChange(e) {
         console.log(`checked = ${e.target.checked}`);
       }
@@ -151,4 +155,4 @@ const Login=({history}) => {
     )
 }
 
-export default Login;
+export default withRouter (Login);

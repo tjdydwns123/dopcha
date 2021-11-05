@@ -7,6 +7,7 @@ import ImgCrop from 'antd-img-crop';
 import Editor from './EditorComponent';
 import Editor2 from './EditorComponent2';
 import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
 
 
 
