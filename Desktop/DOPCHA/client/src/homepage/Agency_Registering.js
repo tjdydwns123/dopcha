@@ -119,16 +119,16 @@ const Agency_Registering=({history}) =>{
             <div className="registering_top">
                 <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
-                            onClick ={( )=> {history.push('/hompage/Agency')}}
+                            onClick ={( )=> {history.push('../homepage/Agency')}}
                             /></Button>
                 <div className='main_click'>
                 
-                <a onClick={() => {history.push('/')}} 
+                <a onClick={() => {history.push('/homepage/Doing')}} 
                  style={{padding:'10px',marginRight:'50px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
                  
-                <a onClick={() => {history.push('/')}} 
+                <a onClick={() => {history.push('/homepage/Done')}} 
                  style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/} </a>
@@ -174,7 +174,7 @@ const Agency_Registering=({history}) =>{
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/hompage/Agency_registering')}} 
+                        onClick ={( )=> {history.push('/homepage/Agency_registering')}} 
                         >글 등록하기</Button> </div>
                     </Drawer>
 
@@ -274,7 +274,7 @@ const Agency_Registering=({history}) =>{
                 <Button block 
                     style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
                     ,borderRadius:'5px', marginTop:'20px'}}
-                    onClick={()=> {history.push('/')}} 
+                    onClick={()=> {history.push('/homepage/Doing')}} 
                     >등록</Button> {/* 진행중인 기부로 경로 바꾸기 */}
                     </div>
 

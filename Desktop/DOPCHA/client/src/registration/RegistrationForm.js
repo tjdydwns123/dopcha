@@ -1,10 +1,58 @@
+import { useState } from "react";
+import { Form, Divider, Button } from "antd";
 import RegistrationProgress from "./RegistrationProgress";
-import { Divider, Button } from "antd";
+import AgencyForm from "./AgencyForm";
+import IndividualForm from "./IndividualForm";
 import logo from "../images/dobcha_logo.png";
-import "antd/dist/antd.css";
-import "./Registration.css";
+import "./RegistrationForm.css";
 
-const Registration = ({ history }) => {
+const Registration_Form = ({
+  history,
+  match: {
+    params: { type },
+  },
+}) => {
+  // console.log(type);
+  const [form] = Form.useForm();
+
+  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+
+  const onEmailChange = (value) => {
+    if (!value) {
+      setAutoCompleteResult([]);
+    } else {
+      setAutoCompleteResult(
+        ["@naver.com", "@google.com", "@daum.net"].map(
+          (domain) => `${value}${domain}`
+        )
+      );
+    }
+  };
+
+  const onWebsiteChange = (value) => {
+    if (!value) {
+      setAutoCompleteResult([]);
+    } else {
+      setAutoCompleteResult(
+        [".com", ".net", ".co.kr"].map((domain) => `${value}${domain}`)
+      );
+    }
+  };
+
+  const emailOptions = autoCompleteResult.map((email) => ({
+    label: email,
+    value: email,
+  }));
+
+  const websiteOptions = autoCompleteResult.map((website) => ({
+    label: website,
+    value: website,
+  }));
+
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+  };
+
   return (
     <div className="main_frame">
       <div className="main_top">
@@ -31,8 +79,7 @@ const Registration = ({ history }) => {
               fontWeight: "bold",
             }}
           >
-            {" "}
-            진행중인 기부 {/* 진행중인 기부 페이지로 경로 바꾸기*/}{" "}
+            진행중인 기부 {/* 진행중인 기부 페이지로 경로 바꾸기*/}
           </a>
 
           <a
@@ -48,8 +95,7 @@ const Registration = ({ history }) => {
               fontWeight: "bold",
             }}
           >
-            {" "}
-            마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/}{" "}
+            마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/}
           </a>
         </div>
 
@@ -92,78 +138,42 @@ const Registration = ({ history }) => {
       <Divider />
 
       <div className="content">
-        {/* 재사용되는 모듈인 회원가입 프로세스 설명 부분은 따로 컴포넌트로 분리했습니다. */}
-        {/* progess라는 prop로 몇 번째 스탭인지 전달합니다. 여기서는 가장 첫 번째 단계이므로 1을 전달합니다. */}
-        <RegistrationProgress progress="1" />
+        <RegistrationProgress progress="2" />
 
         <Divider />
 
-        <div className="ag">
-          <div className="in">
-            <Button
-              style={{
-                width: "300px",
-                height: "100px",
-              }}
-            >
-              <a
-                onClick={() => {
-                  history.push("/registration/agency");
-                }}
-              >
-                <h1>기관 회원가입 하기</h1>
-              </a>
-            </Button>
-            <Divider />
-            <Button
-              style={{
-                width: "300px",
-                height: "100px",
-              }}
-            >
-              <a
-                onClick={() => {
-                  history.push("/registration/individual");
-                }}
-              >
-                <h1>개인 회원가입 하기</h1>
-              </a>
-            </Button>
-          </div>
-        </div>
+        {type === "agency" ? (
+          <AgencyForm
+            form={form}
+            onFinish={onFinish}
+            websiteOptions={websiteOptions}
+            onWebsiteChange={onWebsiteChange}
+          />
+        ) : (
+          <IndividualForm
+            form={form}
+            emailOptions={emailOptions}
+            onFinish={onFinish}
+            onEmailChange={onEmailChange}
+          />
+        )}
       </div>
 
       <div className="bottom">
-        <a
-          herf="#"
-          style={{
-            color: "#8c8c8c",
-          }}
-        >
+        <a herf="#" style={{ color: "#8c8c8c" }}>
           돕차 소개
         </a>
         <Divider type="vertical" />
-        <a
-          herf="#"
-          style={{
-            color: "#8c8c8c",
-          }}
-        >
+        <a herf="#" style={{ color: "#8c8c8c" }}>
           돕차 이용 약관
         </a>
         <Divider type="vertical" />
-        <a
-          herf="#"
-          style={{
-            color: "#8c8c8c",
-          }}
-        >
+        <a herf="#" style={{ color: "#8c8c8c" }}>
           개인정보 처리 방침
-        </a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dobcha ©2021
+        </a>{" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dobcha ©2021
       </div>
     </div>
   );
 };
-
-export default Registration;
+export default Registration_Form;

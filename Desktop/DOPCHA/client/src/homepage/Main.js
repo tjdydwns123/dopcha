@@ -19,13 +19,13 @@ const Main=({history}) => {
                             onClick ={( )=> {history.push('/')}}
                             /></Button>
                 <div className='main_click'>
-                <a onClick={() => {history.push('/')}} 
+                <a onClick={() => {history.push('./homepage/Doing')}} 
                  style={{padding:'10px',marginRight:'50px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
 
                  
-                <a onClick={() => {history.push('/')}} 
+                <a onClick={() => {history.push('/homepage/Done')}} 
                  style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/} </a>
@@ -66,7 +66,7 @@ const Main=({history}) => {
                 <div className='main_donation'>
                     <Button style={{ border:'none'}}
                         ><img src={img_donation} alt ="btn_donation" 
-                                onClick ={( )=> {history.push('./')}} /* 기부메뉴(Donation_Menu) 경로 바꾸기*/
+                                onClick ={( )=> {history.push('../homepage/Doing')}} /* 기부메뉴(Donation_Menu) 경로 바꾸기*/
                                 /></Button>
                 </div>
 {/** 나중에 main_donation, main_volunteer 부분 css 바꾸기!! 등록된 종류가 늘어나면...결론: 백엔드와 같이 상의 */}
@@ -74,7 +74,7 @@ const Main=({history}) => {
                 <div className='main_volunteer'>
                 <Button style={{ border:'none'}}
                     ><img src={img_volunteer} alt ="btn_volunteer" 
-                            onClick ={( )=> {history.push('hompage/Volunteer')}}
+                            onClick ={( )=> {history.push('../homepage/Volunteer')}}
                             /></Button>
                 </div>
             </div>

@@ -1,10 +1,15 @@
 import RegistrationProgress from "./RegistrationProgress";
-import { Divider, Button } from "antd";
-import logo from "../images/dobcha_logo.png";
 import "antd/dist/antd.css";
-import "./Registration.css";
+import "./RegistrationDone.css";
+import logo from "../images/dobcha_logo.png";
+import { Divider, Button } from "antd";
 
-const Registration = ({ history }) => {
+const RegistrationDone = ({
+  history,
+  match: {
+    params: { type },
+  },
+}) => {
   return (
     <div className="main_frame">
       <div className="main_top">
@@ -90,44 +95,40 @@ const Registration = ({ history }) => {
         </div>
       </div>
       <Divider />
-
       <div className="content">
-        {/* 재사용되는 모듈인 회원가입 프로세스 설명 부분은 따로 컴포넌트로 분리했습니다. */}
-        {/* progess라는 prop로 몇 번째 스탭인지 전달합니다. 여기서는 가장 첫 번째 단계이므로 1을 전달합니다. */}
-        <RegistrationProgress progress="1" />
+        <RegistrationProgress progress="3" />
 
         <Divider />
 
         <div className="ag">
           <div className="in">
+            <h1 align-content="center">회원 가입 완료! </h1>
+            <h3 align-content="center">
+              {type === "agency" ? (
+                <div>
+                  기업 회원의 경우 가입 승인까지 최대{" "}
+                  <span className="in-emphasize">14일</span>이 소요될 수
+                  있습니다.
+                  <br />
+                  <span className="in-emphasize">
+                    서류가 기준에 맞지 않을경우 승인이 취소될 수 있습니다.
+                  </span>
+                </div>
+              ) : (
+                <div>
+                  돕차에 가입이 완료되었습니다.
+                  <br />
+                  지금 바로 기부에 동참해주세요.
+                </div>
+              )}
+            </h3>
             <Button
-              style={{
-                width: "300px",
-                height: "100px",
+              onClick={() => {
+                history.push("/login/Login");
               }}
+              style={{ marginTop: "20px" }}
             >
-              <a
-                onClick={() => {
-                  history.push("/registration/agency");
-                }}
-              >
-                <h1>기관 회원가입 하기</h1>
-              </a>
-            </Button>
-            <Divider />
-            <Button
-              style={{
-                width: "300px",
-                height: "100px",
-              }}
-            >
-              <a
-                onClick={() => {
-                  history.push("/registration/individual");
-                }}
-              >
-                <h1>개인 회원가입 하기</h1>
-              </a>
+              로그인하러가기
             </Button>
           </div>
         </div>
@@ -165,5 +166,4 @@ const Registration = ({ history }) => {
     </div>
   );
 };
-
-export default Registration;
+export default RegistrationDone;

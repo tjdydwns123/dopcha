@@ -66,6 +66,11 @@
     justify-content: center;
     width:800px;
     height: 400px;
+    text-align: center;
+  }
+
+  .in-emphasize {
+    color: red;
   }
   
   .bottom {

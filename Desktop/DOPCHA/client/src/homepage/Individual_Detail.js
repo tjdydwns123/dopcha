@@ -67,18 +67,18 @@ const Individual_Detail=({history}) => {
             <div className="detail_top">
             <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
-                            onClick ={( )=> {history.push('/hompage/Individual')}}
+                            onClick ={( )=> {history.push('/homepage/Individual')}}
                             /></Button>
 
                 <div className='detail_click'>
 
-                <a onClick={() => {history.push('/')}} 
+                <a onClick={() => {history.push('/homepage/Doing')}} 
                 style={{padding:'10px',marginRight:'50px',
                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
 
                 
-                <a onClick={() => {history.push('/')}} 
+                <a onClick={() => {history.push('/homepage/Done')}} 
                 style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/} </a>
@@ -123,7 +123,7 @@ const Individual_Detail=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} 
+                        onClick ={( )=> {history.push('/homepage/Individual_Detail')}} 
                         >내역 조회하기</Button> </div>
                     </Drawer>
                     

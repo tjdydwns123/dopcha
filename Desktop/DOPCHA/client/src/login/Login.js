@@ -19,7 +19,7 @@ const Login=({history}) => {
       const [key1, setKey1] = React.useState('')
 
       const handleLogin = () => {
-          key === whiteList.id ? history.push('../hompage/Agency'): message.error('등록되지 않은 기관입니다.')
+          key === whiteList.id ? history.push('../homepage/Agency'): message.error('등록되지 않은 기관입니다.')
       } /* 이동 링크 바꾸기 로그인: 기관 로그인 시 나오는 페이지(Agency)*/
     const whiteList = {
         id:'test'
@@ -27,7 +27,7 @@ const Login=({history}) => {
    
 
     const handleLogin2 = () => {
-        key1 === whiteList2.id ? history.push('../hompage/Individual'): message.error('등록되지 않은 사용자입니다.')
+        key1 === whiteList2.id ? history.push('../homepage/Individual'): message.error('등록되지 않은 사용자입니다.')
     }/* 이동 링크 바꾸기 로그인: 로그인: 개인 로그인 시 나오는 페이지(Individual)*/
 
     const whiteList2 ={

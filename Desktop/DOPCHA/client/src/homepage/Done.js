@@ -1,10 +1,25 @@
-import RegistrationProgress from "./RegistrationProgress";
-import { Divider, Button } from "antd";
+import React from "react";
+import "./Done.css";
+import {
+  Divider,
+  Button,
+  Carousel,
+  Menu,
+  Dropdown,
+  Card,
+  Col,
+  Row,
+} from "antd";
 import logo from "../images/dobcha_logo.png";
-import "antd/dist/antd.css";
-import "./Registration.css";
+import DonationCard from "./DonationCard";
 
-const Registration = ({ history }) => {
+import img_banner1 from "../images/img_banner1.png";
+import img_banner2 from "../images/img_banner2.png";
+import img_donation from "../images/img_donation.png";
+import img_volunteer from "../images/img_volunteer.png";
+
+const { Meta } = Card;
+const Done = ({ history }) => {
   return (
     <div className="main_frame">
       <div className="main_top">
@@ -91,79 +106,34 @@ const Registration = ({ history }) => {
       </div>
       <Divider />
 
-      <div className="content">
-        {/* 재사용되는 모듈인 회원가입 프로세스 설명 부분은 따로 컴포넌트로 분리했습니다. */}
-        {/* progess라는 prop로 몇 번째 스탭인지 전달합니다. 여기서는 가장 첫 번째 단계이므로 1을 전달합니다. */}
-        <RegistrationProgress progress="1" />
-
-        <Divider />
-
-        <div className="ag">
-          <div className="in">
-            <Button
-              style={{
-                width: "300px",
-                height: "100px",
-              }}
-            >
-              <a
-                onClick={() => {
-                  history.push("/registration/agency");
-                }}
-              >
-                <h1>기관 회원가입 하기</h1>
-              </a>
-            </Button>
-            <Divider />
-            <Button
-              style={{
-                width: "300px",
-                height: "100px",
-              }}
-            >
-              <a
-                onClick={() => {
-                  history.push("/registration/individual");
-                }}
-              >
-                <h1>개인 회원가입 하기</h1>
-              </a>
-            </Button>
-          </div>
+      <div className="main_middle">
+        <div className="donation">
+          <DonationCard type="closed" />
+          <DonationCard type="closed" />
+          <DonationCard type="closed" />
+          <DonationCard type="closed" />
+          <DonationCard type="closed" />
+          <DonationCard type="closed" />
         </div>
-      </div>
+        {/** 나중에 main_donation, main_volunteer 부분 css 바꾸기!! 등록된 종류가 늘어나면...결론: 백엔드와 같이 상의 */}
 
-      <div className="bottom">
-        <a
-          herf="#"
-          style={{
-            color: "#8c8c8c",
-          }}
-        >
-          돕차 소개
-        </a>
-        <Divider type="vertical" />
-        <a
-          herf="#"
-          style={{
-            color: "#8c8c8c",
-          }}
-        >
-          돕차 이용 약관
-        </a>
-        <Divider type="vertical" />
-        <a
-          herf="#"
-          style={{
-            color: "#8c8c8c",
-          }}
-        >
-          개인정보 처리 방침
-        </a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dobcha ©2021
+        <div className="main_bottom">
+          <a herf="#" style={{ color: "#8c8c8c" }}>
+            돕차 소개
+          </a>
+          <Divider type="vertical" />
+          <a herf="#" style={{ color: "#8c8c8c" }}>
+            돕차 이용 약관
+          </a>
+          <Divider type="vertical" />
+          <a herf="#" style={{ color: "#8c8c8c" }}>
+            개인정보 처리 방침{" "}
+          </a>{" "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dobcha ©2021
+        </div>
       </div>
     </div>
   );
 };
 
-export default Registration;
+export default Done;
