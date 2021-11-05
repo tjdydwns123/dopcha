@@ -115,7 +115,6 @@ const Login=({history}) => {
                          />
                         </div>
                         </div>
-
                         <div className="ccc">
                             <a onClick={() => {history.push('/login/Finding_id')}} style={{color:'#000000'}}>
                                 ID/PW 찾기
