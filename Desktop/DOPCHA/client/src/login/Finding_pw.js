@@ -2,6 +2,7 @@ import React from 'react'
 import './Finding_pw.css';
 import { Divider, Input, Button , Dropdown, Menu} from 'antd';
 import logo from '../images/dobcha_logo.png'
+import axios from 'axios';
 
 
 

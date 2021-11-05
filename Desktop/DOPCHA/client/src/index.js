@@ -9,6 +9,7 @@ import {applyMiddleware} from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios'
 
 const createProxyMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 

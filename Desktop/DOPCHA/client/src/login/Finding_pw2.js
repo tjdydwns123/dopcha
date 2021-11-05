@@ -2,6 +2,7 @@ import React from 'react'
 import './Finding_pw2.css';
 import { Divider, Input, Button,Menu, Dropdown} from 'antd';
 import logo from '../images/dobcha_logo.png';
+import axios from 'axios';
 
 
 const Finding_pw2=({history}) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
+import axios from 'axios'
 class EditorComponent2 extends Component{
     constructor(props){
         super(props);
