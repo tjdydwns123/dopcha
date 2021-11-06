@@ -27,12 +27,12 @@ import RegistrationDone from "./registration/RegistrationDone";
 
 const App = () => {
   const callApi = async()=>{
-    // const reponse = await fetch('/api/main');
-    // const body = await reponse.json();
-    // if (reponse.status !==200) throw Error(body.message);
+    const reponse = await fetch('/api/main');
+    const body = await reponse.json();
+    if (reponse.status !==200) throw Error(body.message);
 
-    // return body;
-    axios.get("/api").then((res)=>console.log(res.data.test));
+    return body;
+    //axios.get("/api").then((res)=>console.log(res.data.test));
   };
 
 // const App = () => {
