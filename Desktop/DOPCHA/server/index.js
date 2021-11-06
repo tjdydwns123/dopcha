@@ -23,7 +23,7 @@ mongoose.connect('mongodb+srv://ssy:1234@cluster0.1bw63.mongodb.net/myFirstDatab
     });
 
 app.get('/api/hello', (req, res) => {
- res.send('Hello World! fnfnfn 하하하')})
+ res.send('Hello World! 안녕하세요 하하하')})
 
 app.post('/api/users/register',(req,res)=>{
   //회원가입시 필요한 정보들을 클라이언트에서 가져오면 db에 넣어줌
