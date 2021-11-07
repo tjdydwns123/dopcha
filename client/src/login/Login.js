@@ -81,7 +81,7 @@ const Login=({history}) => {
                             , border:'none',borderRadius:'5px'}}> 로그인</Button>
 
                         <Button type='primary' onClick={() => {
-                            history.push('/registration/Agency_R')}} 
+                            history.push('/registration/agency')}} 
                             style={{display:'flex',width: '300px', height: 'auto', justifyContent: 'center', marginLeft: '20px',marginTop:'8px'
                             , border:'none',borderRadius:'5px'}}> 기관 회원가입</Button>
                        
@@ -126,7 +126,7 @@ const Login=({history}) => {
                             , border:'none',borderRadius:'5px'}}> 로그인</Button>
 
                         <Button type='primary' onClick={() => {
-                            history.push('/registration/Individual_R')}} 
+                            history.push('/registration/individual')}} 
                             style={{display:'flex',width: '300px', height: 'auto', justifyContent: 'center',marginTop:'8px', marginLeft: '20px'
                             , border:'none',borderRadius:'5px'}}> 개인 회원가입</Button>
                        

@@ -1,5 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route }  from 'react-router-dom';
+//import Landing from "./landing/Landing";
+import Auth from './hoc/auth';
 import Login from './login/Login';
 import Main from './homepage/Main';
 import Agency from './homepage/Agency';
@@ -26,14 +28,46 @@ import RegistrationDone from "./registration/RegistrationDone";
 
 
 const App = () => {
-  const callApi = async()=>{
-    const reponse = await fetch('/api/main');
-    const body = await reponse.json();
-    if (reponse.status !==200) throw Error(body.message);
+  // const callApi = async()=>{
+  //   const reponse = await fetch('/api/main');
+  //   const body = await reponse.json();
+  //   if (reponse.status !==200) throw Error(body.message);}
 
-    return body;
-    //axios.get("/api").then((res)=>console.log(res.data.test));
-  };
+  //   return body;
+  //   axios.get("/api").then((res)=>console.log(res.data.test));
+  // option
+  // null : 아무나 출입 가능한 페이지
+  // true : 로그인한 유저만 출입 가능한 페이지    /registration/agency /registration/individual
+  // flase : 로그인한 유저는 출입 불가능한 페이지
+  return(
+    <>
+    <Router>
+      <Route path ='/' exact component = {Auth(Main,null)}/>
+      <Route path ='/homepage/Agency' exact component = {Auth(Agency,true)}/>
+      <Route path='/homepage/Agency_Registering' exact component={Auth(Agency_Registering,true)}/>
+      <Route path ='/homepage/Individual' exact component = {Auth(Individual,true)}/>
+      <Route path ='/homepage/Individual_Detail' exact component = {Auth(Individual_Detail,true)}/>
+      <Route path ='/homepage/Volunteer' exact component = {Auth(Volunteer,null)}/>
+      <Route path ='/login/Login' exact component = {Auth(Login,false)}/>
+      <Route path ='/login/Finding_id' exact component = {Auth(Finding_id,false)}/>
+      <Route path ='/login/Finding_id2' exact component = {Auth(Finding_id2,false)}/>
+      <Route path='/login/Finding_pw' exact component = {Auth(Finding_pw,false)}/>
+      <Route path='/login/Finding_pw2' exact component = {Auth(Finding_pw2,false)}/>
+      <Route path='/registration/Registration' exact component = {Auth(Registration,false)} />
+      <Route path="/homepage/Doing" exact component={Auth(Doing,null)} />
+      <Route path="/homepage/Done" exact component={Auth(Done,null)} />
+      <Route path="/campaign/:type/:id" exact component={Auth(CampaignDetail,null)} />
+       {/* 기관, 개인 회원가입 모두 하나의 컴포넌트에서 처리합니다. 대신 URL의 type이라는 이름의 props로 회원가입 유형을 구분합니다. */}
+       <Route path="/registration/:type" exact component={RegistrationForm} />
+        {/* 위와 동일합니다 */}
+        <Route
+          path="/registration/done/:type"
+          exact
+          component={RegistrationDone} />
+    </Router>
+    </>
+  )
+  
 
 // const App = () => {
 //   const callApi = async()=>{
@@ -56,43 +90,10 @@ const App = () => {
 //     axios.get("/homepage/Done").then((res)=>console.log(res.data.test));
 //     axios.get("/homepage/CampaignDetail").then((res)=>console.log(res.data.test));
     
-
-
 //   };
 
   // useEffect(()=>{
   //   callApi();
   // }, []);
-  
-  return(
-    <>
-    <Router>
-
-      <Route path ='/' exact component = {Main}/>
-      <Route path ='/homepage/Agency' exact component = {Agency}/>
-     <Route path='/homepage/Agency_Registering' exact component={Agency_Registering}/>
-      <Route path ='/homepage/Individual' exact component = {Individual}/>
-      <Route path ='/homepage/Individual_Detail' exact component = {Individual_Detail}/>
-      <Route path ='/homepage/Volunteer' exact component = {Volunteer}/>
-      <Route path ='/login/Login' exact component = {Login}/>
-      <Route path ='/login/Finding_id' exact component = {Finding_id}/>
-      <Route path ='/login/Finding_id2' exact component = {Finding_id2}/>
-      <Route path='/login/Finding_pw' exact component = {Finding_pw}/>
-      <Route path='/login/Finding_pw2' exact component = {Finding_pw2}/>
-      <Route path='/registration/Registration' exact component = {Registration} />
-      <Route path="/homepage/Doing" exact component={Doing} />
-      <Route path="/homepage/Done" exact component={Done} />
-      <Route path="/campaign/:type/:id" exact component={CampaignDetail} />
-       {/* 기관, 개인 회원가입 모두 하나의 컴포넌트에서 처리합니다. 대신 URL의 type이라는 이름의 props로 회원가입 유형을 구분합니다. */}
-       <Route path="/registration/:type" exact component={RegistrationForm} />
-        {/* 위와 동일합니다 */}
-        <Route
-          path="/registration/done/:type"
-          exact
-          component={RegistrationDone} />
-    </Router>
-    </>
-  )
-}
-
+  }
 export default App;
