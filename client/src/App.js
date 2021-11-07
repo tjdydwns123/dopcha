@@ -60,9 +60,9 @@ const App = () => {
 
 //   };
 
-  useEffect(()=>{
-    callApi();
-  }, []);
+  // useEffect(()=>{
+  //   callApi();
+  // }, []);
   
   return(
     <>
