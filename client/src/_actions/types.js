@@ -1,4 +1,6 @@
 export const LOGIN_USER = "login_user"
 export const REGISTER_USER = "register_user"
 export const AUTH_USER = "auth_user"
-export const CREATE_BOARD = "create_board"
+export const LOGIN_AGENCY = "login_agency"
+export const REGISTER_AGENCY ="register_agency"
+export const AUTH_AGENCY="auth_agency"
