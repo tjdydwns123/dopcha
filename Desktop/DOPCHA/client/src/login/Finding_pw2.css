@@ -1,0 +1,94 @@
+.frame4{
+    display: flex;
+    flex-direction: column;
+    padding:30px;
+}
+
+.top5{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-around;
+}
+
+.click3{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.btn3{
+    display: flex;
+    flex-direction: row;
+}
+
+.middle5{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: 95px;
+    margin-right: 95px;
+}
+
+.middle_IP4{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.middle_Box4{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #F9F9F9;
+}
+
+.middle_BoxH3{
+    display: flex;
+    margin-top: 15px;
+
+}
+.virtual_Box3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 600;
+    height: 500;
+
+}
+
+.middle_BoxP{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+    float: right;
+}
+
+.middle_BoxPC{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+    float: right;
+}
+
+.middle_BoxB4{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.bottom5{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+}

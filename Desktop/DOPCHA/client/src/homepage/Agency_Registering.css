@@ -1,0 +1,98 @@
+.AR_frame{
+    display: flex;
+    flex-direction: column;
+    padding:40px;
+}
+
+.registering_top{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 7px;
+    justify-content: space-around;
+}
+
+.main_click{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.main_btn{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.registering_middle{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 10px;
+    margin-left:25px;
+    margin-right: 25px;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.table_box{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    justify-content: center;
+    align-content: center;
+    background-color: #F9F9F9;
+    margin-top: 10px;
+    padding: 20px;
+    
+}
+.table_boxT{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.table_boxW{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 7px;
+}
+.table_boxUP{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 75px;
+
+}
+.table_boxM{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin-top: 78px;
+
+}
+
+.table_boxD{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin-top: 7px;
+
+}
+
+
+
+.regist_btn{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 15px;
+}
+
+
+
+.registering_bottom{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10px;
+}
