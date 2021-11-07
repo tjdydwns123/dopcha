@@ -9,6 +9,8 @@ import {
 } from "antd";
 import "antd/dist/antd.css";
 import "./AgencyForm.css";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../_actions/user_action";
 import logo from "../images/dobcha_logo.png";
 import { UploadOutlined } from "@ant-design/icons";
 

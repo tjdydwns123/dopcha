@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10
 const jwt = require('jsonwebtoken');
+const { default: AgencyForm } = require('../../client/src/registration/AgencyForm');
 //const myPlaintextPassword = 's0/\/\P4$$w0rD';
 //const someOtherPlaintextPassword = 'not_bacon';
 
-const userSchema = mongoose.Schema({
+const agnecySchema = new mongoose.Schema({
     id:{
         type: String,
         maxlength: 50,
@@ -17,44 +18,33 @@ const userSchema = mongoose.Schema({
         minlenth: 5,
         required: true
     },
-    name:{
-        type: String,
-        maxlength: 50,
-        required: true
-    },
     agencyName:{
         type: String,
         maxlength: 50,
         required: true
     },
-    agencyRepName:{
+    ceoName:{
         type: String,
         maxlength: 50,
         required: true
     },
-
+    phone:{
+        type: String,
+        trim: true,
+        required: true
+    },
+    fax:{
+        type: String,
+        trim: true,
+        required: true
+    },
     email:{
         type: String,
         trim: true,
         unique: 1,
         required: true
     },
-    faxNumber:{
-        type: String,
-        trim: true,
-        required: true
-    },
-    phoneNumber:{
-        type: String,
-        trim: true,
-        required: true
-    },
-    webSite:{
-        type: String,
-        trim: true,
-        required: true
-    },
-    certificate:{
+    file:{
         type: String,
         trim: true,
         required: true
@@ -74,59 +64,45 @@ const userSchema = mongoose.Schema({
     }
 })
 
-userSchema.pre('save',function(next){
-    var user = this; 
+agencySchema.pre('save',function(next){
+    var agency = this; 
     // 비밀번호 암호화
-
-    if(user.isModified('password')){
+    if(agency.isModified('password')){
         bcrypt.genSalt(saltRounds, function(err,salt){
-        
             if (err) return next(err)
-    
-            bcrypt.hash (user.password, salt, function(err,hash){
+            bcrypt.hash (agency.password, salt, function(err,hash){
                 if (err) return next(err)
-                user.password = hash
+                agency.password = hash
                 next()
             })
-        
         })    
     } else{
         next()
     }
-
 })
-
-userSchema.methods.comparePassword = function(plainPassword, cb){
-
+//로그인 시 비밀번호 암호화 후 디비에 저장된 비밀번호와 비교        
+agencySchema.methods.comparePassword = function(plainPassword, cb){
     //plainPassword 1234567 암호화된 비밀번호
     bcrypt.compare(plainPassword, this.password, function(err, isMatch){
         if(err) return cb(err);
             cb(null, isMatch)
     })
 }
-
-userSchema.methods.generateToken = function(cb){
-
-    var user = this;
-
-    //웹토큰 생성
-
-    var token = jwt.sign(user._id.toHexString(), 'secretToken')
-
+//로그인 시 토큰 생성
+agencySchema.methods.generateToken = function(cb){
+    var agency = this;
+    var token = jwt.sign(agency._id.toHexString(), 'secretToken')
     //user._id + 'secretToken' = token
-    
     //->
-
     //'secretToken' -> user._id
-    user.token = token
-    user.save(function(err,user){
+    agency.token = token
+    agency.save(function(err,user){
         if(err) return cb(err)
         cb(null, user)
     })
-
 }
 
-userSchema.statics.findByToken = function(token, cb){
+agencySchema.statics.findByToken = function(token, cb){
     var user = this;
 
     //토큰 디코딩
@@ -134,7 +110,7 @@ userSchema.statics.findByToken = function(token, cb){
         //유저 아이디를 이용해 유저를 찾은 후
         //클라이언트의 토큰과 db의 토큰이 일치하는지 확인
 
-        user.findOne({"_id":decoded,"token":token}, function(err,user){
+        agency.findOne({"_id":decoded,"token":token}, function(err,user){
 
             if (err) return cb(err);
             cb(null, user)
@@ -146,6 +122,6 @@ userSchema.statics.findByToken = function(token, cb){
 
 }
 
-const User = mongoose.model('User', userSchema)
+const Agency = mongoose.model('agency', userSchema)
 
 module.exports = {User}

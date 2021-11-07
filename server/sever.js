@@ -4,5 +4,5 @@ const api = require('./index.js');
 
 app.use('/api',api);
 
-app.listen(5001,()=>console.log('Node.js Server is running on port 5000....'))
+app.listen(5000,()=>console.log('Node.js Server is running on port 5000....'))
 
