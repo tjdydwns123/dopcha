@@ -1,0 +1,1 @@
+export const CREAT_DONATE = "create_donate"
