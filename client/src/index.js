@@ -8,7 +8,6 @@ import {applyMiddleware, createStore} from 'redux'
 import promiseMiddleware from 'redux-promise'
 import ReduxThunk from 'redux-thunk'
 import Reducer from './_reducers';
-import { IconProvider } from '@ant-design/icons';
 
 const creatStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 

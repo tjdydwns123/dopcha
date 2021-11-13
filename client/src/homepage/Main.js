@@ -69,6 +69,10 @@ const Main=({history}) => {
                                 onClick ={( )=> {history.push('../homepage/Doing')}} /* 기부메뉴(Donation_Menu) 경로 바꾸기*/
                                 /></Button>
                 </div>
+
+
+
+                <br/>
 {/** 나중에 main_donation, main_volunteer 부분 css 바꾸기!! 등록된 종류가 늘어나면...결론: 백엔드와 같이 상의 */}
 
                 <div className='main_volunteer'>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect}from "react";
 import "./Doing.css";
 import {
   Divider,
@@ -14,8 +14,22 @@ import logo from "../images/dobcha_logo.png";
 import DonationCard from "./DonationCard";
 import axios from "axios";
 
+
 const { Meta } = Card;
 const Doing = ({ history }) => {
+
+  useEffect(() => {
+    axios.post('/api/donate/donateList')
+      .then(response => {
+        if(response.data.success) {
+          console.log(response.data)
+        }else{
+          alert("리스트가지고 오는데 실패")
+        }
+      })
+  }, [])
+  
+
   return (
     <div className="main_frame">
       <div className="main_top">
@@ -103,13 +117,10 @@ const Doing = ({ history }) => {
       <Divider />
 
       <div className="main_middle">
-        <div className="donation">
-          <DonationCard />
-          <DonationCard />
-          <DonationCard />
-        </div>
+        <DonationCard />
+        
         {/** 나중에 main_donation, main_volunteer 부분 css 바꾸기!! 등록된 종류가 늘어나면...결론: 백엔드와 같이 상의 */}
-
+        <br/>
         <div className="main_bottom">
           <a herf="#" style={{ color: "#8c8c8c" }}>
             돕차 소개

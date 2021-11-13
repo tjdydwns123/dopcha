@@ -6,15 +6,19 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const {auth} = require('./middleware/auth');
 const {User} = require("./models/User");
-const {Donate} = require("./models/Donate")
 const config = require('./config/key'); 
 //application/x-www-forn-urlencoded
-app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const mongoose = require('mongoose')
+const {Donate} = require("./models/Donate")
+const multer = require('multer');
+
+
+const mongoose = require('mongoose');
+
 //mongoose.connect('mongodb+srv://ssy:1234@cluster0.1bw63.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 //.then(() => console.log('MongoDB Connected...'))
 //.catch((err)=> console.log('MongoDB error:',err))
@@ -28,8 +32,6 @@ router.get("/api/hello", (req,res)=>{
   res.send({test: "hi"});
 });
 
-app.get('/api/hello', (req, res) => {
- res.send('Hello World! fnfnfn 하하하')})
 
 app.post('/api/users/register',(req,res)=>{
   //회원가입시 필요한 정보들을 클라이언트에서 가져오면 db에 넣어줌
@@ -73,6 +75,17 @@ app.post('/api/users/login',(req, res)=>{
   })
 })
 
+app.post('/api/users/logout', auth, (req, res)=>{
+  User.findOneAndUpdate({_id: req.user._id},
+    {token:""}
+    ,(err,user)=>{
+      if(err) return res.json({success:false, err});
+      return res.status(200).send({
+        success: true
+      })
+    })
+})
+
 app.get('/api/users/auth', auth ,(req, res)=>{
 
   //여기까지 미들웨어 통과해왔다 = 인증이 참이라는 말.
@@ -88,30 +101,56 @@ app.get('/api/users/auth', auth ,(req, res)=>{
   })
 })
 
-app.get('/api/users/logout', auth, (req, res)=>{
-  User.findOneAndUpdate({_id: req.user._id},
-    {token:""}
-    ,(err,user)=>{
-      if(err) return res.json({success:false, err});
-      return res.status(200).send({
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, `${Date.now()}_${file.originalname}`)
+  }
+})
+
+const upload = multer({ storage: storage}).single("file")
+app.post('/api/donate/image', (req, res) => {
+    // 가져온 이미지 저장
+    upload(req, res, err => {
+        if (err) {
+            return req.json({ success: false, err })
+        }
+        return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename })
+    })
+  })
+
+//기부 글등록시 필요한 정보들을 클라이언트에서 가져오면 db에 넣어줌
+app.post('/api/donate/Agency_Registering',(req,res)=>{
+    const donate = new Donate(req.body)
+    donate.save((err, donate)=>{
+      if(err) return res.json({success: false, err})
+      return res.status(200).json({
         success: true
       })
     })
-
-
-})
-
-app.post('/api/donate/Agency_Registering',(req,res)=>{
-  //기부 글등록시 필요한 정보들을 클라이언트에서 가져오면 db에 넣어줌
-  const donate = new Donate(req.body)
-  donate.save((err, donate)=>{
-    if(err) return res.json({success: false, err})
-    return res.status(200).json({
-      success: true
-    })
   })
-})
+  
+  // 기부 리스트 조회
+  
+  
+  app.post('/api/donate/donateList', (req, res) =>{
+    /*Donate.find({},{"_id": false, "title": true, "company_name": true, "content": true, 
+                    "usage_plan": true, "target_fundraising": true},(err, donate)=>{
+      if(err) return res.json({success:false, err})
+      return res.status(200).json({ data: donate })
+    })*/
 
+    Donate.find()
+      .populate("company_name")
+      .exec((err, donationList) => {
+        if(err) return res.status(400).json({success: false, err})
+        return res.status(200).json({success: true, donationList})
+      })
+  
+  })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

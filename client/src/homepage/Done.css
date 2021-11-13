@@ -57,3 +57,8 @@
   grid-gap: 30px;
   margin: 50px 0;
 }
+
+.blurEffect {
+  filter: grayscale(100%);
+  -webkit-filter: blur(50px);
+}

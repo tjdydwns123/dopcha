@@ -11,6 +11,8 @@ import Finding_id from './login/Finding_id';
 import Finding_id2 from './login/Finding_id2';
 import Finding_pw from './login/Finding_pw';
 import Finding_pw2 from './login/Finding_pw2';
+import DonationCard from './homepage/DonationCard';
+import FileUpload from './components/utils/FileUpload';
 
 import 'antd/dist/antd.css';
 import {useEffect,useState} from 'react';
@@ -82,7 +84,10 @@ const App = () => {
       <Route path='/registration/Registration' exact component = {Registration} />
       <Route path="/homepage/Doing" exact component={Doing} />
       <Route path="/homepage/Done" exact component={Done} />
+      <Route path="/homepage/DonationCard" exact component={DonationCard} />
       <Route path="/campaign/:type/:id" exact component={CampaignDetail} />
+      
+      <Route path="/homepage/FileUpload" exact component={FileUpload} />
        {/* 기관, 개인 회원가입 모두 하나의 컴포넌트에서 처리합니다. 대신 URL의 type이라는 이름의 props로 회원가입 유형을 구분합니다. */}
        <Route path="/registration/:type" exact component={RegistrationForm} />
         {/* 위와 동일합니다 */}

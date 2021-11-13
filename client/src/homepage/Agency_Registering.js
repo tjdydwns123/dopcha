@@ -10,6 +10,7 @@ import 'react-quill/dist/quill.snow.css';
 import axios, { Axios } from 'axios'
 import {useDispatch} from 'react-redux'
 import { createdonate } from '../_actions/donate_action';
+import FileUpload from '../components/utils/FileUpload'
 
 const Agency_Registering=({history}) =>{
     const [desc, setDesc] = useState('');
@@ -31,35 +32,31 @@ const Agency_Registering=({history}) =>{
         console.log('changed', value);
         //setTargetFundraising(value)
       }
-
+    
+    
+      const [Images, setImages] = useState([])
+      const updateImages = (newImages) => {
+        setImages(newImages)
+    }
       
     const props = {
-        name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-        headers: {
-          authorization: 'authorization-text',
-        },
+        action: '//jsonplaceholder.typicode.com/posts/',
+        listType: 'picture',
+        
         onChange(info) {
           if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
+            console.log('업로드 내용', info.fileList);
           }
           if (info.file.status === 'done') {
             message.success(`${info.file.name} file uploaded successfully`);
           } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
+            message.error(`${info.file.name} file upload failed. 실패`);
           }
-        },
-        defaultFileList: [
-            {
-              uid: '1',
-              status: 'done',
-              response: 'Server Error 500', // custom error message to show
-              src: {logo}
-            },] // png db에서 가져오는 식으로 코드 바꾸기 => 임의로 사진 설정
-      };
+        }
+    };
 
 
-
+    // 개인정보 이미지
     const getBase64=(img, callback) =>{
         const reader = new FileReader();
         reader.addEventListener('load', () => callback(reader.result));
@@ -96,8 +93,6 @@ const Agency_Registering=({history}) =>{
             
         }
           };
-      
-
 
           const [visible, setVisible] = useState(false);
         const showDrawer = () => {
@@ -142,7 +137,9 @@ const Agency_Registering=({history}) =>{
         setHackValue(undefined);
       }
       console.log('날짜', value)
-      };
+      console.log('anj', hackValue)
+    };
+
 
     const onSubmitHandler = (event) =>{
       event.preventDefault();
@@ -153,7 +150,8 @@ const Agency_Registering=({history}) =>{
         content: desc,
         usage_plan: desc2,
         target_fundraising: TargetFundraising,
-        Date: value
+        Date: value,
+        image: Images
       }
 
       dispatch(createdonate(body))
@@ -333,13 +331,9 @@ const Agency_Registering=({history}) =>{
 
 
                 <div className="regist_btn">
-                <Upload {...props}>
-                    <Button style={{display:'flex',width: '120px', marginLeft:'28px',height: '30px', justifyContent: 'center'
-                    ,borderRadius:'5px', marginRight:'10px', marginTop:'20px'}} icon={<UploadOutlined style={{fontSize:"15px"
-                    }}/>}> File Upload
-                        </Button>
-                </Upload>
-          
+                <FileUpload refreshFunction={updateImages}/>
+                
+                    
                 <Button block   //onSubmit={onSubmitHandler}
                     style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
                     ,borderRadius:'5px', marginTop:'20px'}}

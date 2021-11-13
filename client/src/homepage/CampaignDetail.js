@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Divider, Button, Carousel, Progress } from "antd";
 import logo from "../images/dobcha_logo.png";
 import "./CampaignDetail.css";
 import axios from "axios";
-
+import { Col, Row } from "antd";
 const CampaignDetail = ({
   history,
   match: {
@@ -11,6 +11,31 @@ const CampaignDetail = ({
   },
 }) => {
   const [tab, setTab] = useState(1);
+
+  const [List, setList] = useState([])
+
+  useEffect(() => {
+    axios.post('/api/donate/donateList')
+      .then(response => {
+        if(response.data.success) {
+          console.log("정보", response.data)
+          setList(response.data.donationList)
+        }else{
+          alert("리스트가지고 오기 실패")
+        }
+      })
+  }, [])
+
+  const renderList = List.map((donationList, index) =>{
+    console.log("정보", donationList)
+    return (
+      <Col  key={index}>
+      
+      </Col>
+    )
+  })
+
+
 
   return (
     <div className="main_frame">

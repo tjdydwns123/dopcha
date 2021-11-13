@@ -50,8 +50,11 @@ const donateSchema = mongoose.Schema({
         maxLength: 100,
         //required: true
     },
-    image: String,
-   
+    images: {
+        type:Array,
+        maxLength: 100,
+        //required: true
+    }
 })
 
 const Donate = mongoose.model('Donate', donateSchema)
